@@ -9,10 +9,15 @@
     <link href="{{ asset('DataTable/jquery.dataTables.min.css') }}" rel="stylesheet">
     <script src="{{ asset('DataTable/jquery-3.7.0.js') }}"></script>
     <script src="{{ asset('DataTable/dataTables.min.js') }}"></script>
+    {{-- Font Awesome Icon Cdn --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    {{-- Add Favicon --}}
+   <link rel="icon" href="{{ asset('assets/favicon.jpg') }}" type="image/x-icon" />
 </head>
 
 <center>
-    <h1>USER DETAILS <a class="float-right btn btn-info" href="{{ route('store') }}">ADD USER</a></h1>
+    <h1>USER DETAILS <a class="float-right btn btn-info" href="{{ route('store') }}">ADD USER <i class="fas fa-user"></i></a></h1>
 
 </center>
 
@@ -59,13 +64,13 @@
                             <form action="{{ url('edit/' . $record->id) }}" method="GET">
                                 @csrf <!-- CSRF Token -->
                                 @method('GET') <!-- Spoof the DELETE method -->
-                                <button type="submit" class="btn btn-primary btn-sm">EDIT</button>
+                                <button type="submit" class="btn btn-primary btn-sm">EDIT<i class="fas fa-edit"></i></button>
                             </form>
                             &nbsp;&nbsp;
                             <form action="{{ url('delete/' . $record->id) }}" method="POST">
                                 @csrf <!-- CSRF Token -->
                                 @method('DELETE') <!-- Spoof the DELETE method -->
-                                <button type="submit" class="btn btn-danger btn-sm">DELETE</button>
+                                <button type="submit" class="btn btn-danger btn-sm">DELETE <i class="fas fa-trash-alt  ml-4"></i></button>
                             </form>
                             {{-- <a href=""></a> --}}
                         </td>
