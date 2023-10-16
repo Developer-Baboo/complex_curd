@@ -12,7 +12,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $forms = Form::all();
+        $forms = Form::orderBy('created_at', 'desc')->get();
         return view('show', compact('forms'));
     }
 
@@ -51,7 +51,7 @@ class FormController extends Controller
         }
 
         $data->save();
-        return redirect()->back()->with('success', 'Data Saved');
+        return redirect('/')->with('success', 'User Added Successfully');
 
     }
 
@@ -105,7 +105,7 @@ class FormController extends Controller
         $data->save();
         // Update the updated_at timestamp
         $data->touch();
-        return redirect('/')->with('success', 'Data Saved');
+        return redirect('/')->with('success', 'User Updated Successfully');
     }
 
     /**
@@ -114,6 +114,6 @@ class FormController extends Controller
     public function destroy(string $id)
     {
        Form::destroy($id);
-       return redirect()->back()->with('success', 'Data Deleted');
+       return redirect('/')->with('success', 'User Deleted Successfully');
     }
 }
