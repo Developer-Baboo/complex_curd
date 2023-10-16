@@ -39,7 +39,7 @@ class FormController extends Controller
         //Save Checkbox
 
         $checkbox_data = $request->input('skill');
-        $data->skill = implode(' , ', $checkbox_data);
+        $data->skill = implode(',', $checkbox_data);
 
 
         //Save Image
@@ -80,7 +80,32 @@ class FormController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return "h1ll";
+        $data = Form::find($id);
+
+        $data->name = $request->input('name');
+
+        $data->gender = $request->input('gender');
+
+        $data->country = $request->input('country');
+
+        //Save Checkbox
+
+        $checkbox_data = $request->input('skill');
+        $data->skill = implode(',', $checkbox_data);
+
+
+        //Save Image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('assets/images'), $image_name);
+            $data->image = $image_name;
+        }
+
+        $data->save();
+        // Update the updated_at timestamp
+        $data->touch();
+        return redirect('/')->with('success', 'Data Saved');
     }
 
     /**

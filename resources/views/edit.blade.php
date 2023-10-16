@@ -29,19 +29,19 @@
 
             <Legend>Skills</Legend>
             <div class="form-check">
-                <input class="form-check-input" name="skill[]" type="checkbox" value="java" id="flexCheckDefault" {{ in_array('java', explode(',', $record->skill)) ? 'checked' : '' }} >
+                <input class="form-check-input" name="skill[]" type="checkbox" value="java" id="flexCheckJava" {{ in_array('java',explode(',', $record->skill)) ? 'checked' : '' }} >
                 <label class="form-check-label" for="flexCheckDefault">
                     Java
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" name="skill[]" type="checkbox" value="python" id="flexCheckChecked" {{ in_array('python', explode(',', $record->skill)) ? 'checked' : '' }}>
+                <input class="form-check-input" name="skill[]" type="checkbox" value="python" id="flexCheckPython" {{ in_array('python',explode(',', $record->skill)) ? 'checked' : '' }}>
                 <label class="form-check-label" for="flexCheckChecked">
                     Python
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" name="skill[]" type="checkbox" value="c++" id="flexCheckChecked" {{ in_array('c++', explode(',', $record->skill)) ? 'checked' : '' }}>
+                <input class="form-check-input" name="skill[]" type="checkbox" value="c++" id="flexCheckC++" {{ in_array('c++',explode(',', $record->skill)) ? 'checked' : '' }}>
                 <label class="form-check-label" for="flexCheckChecked">
                     C++
                 </label>
