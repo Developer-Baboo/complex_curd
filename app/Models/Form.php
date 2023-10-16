@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Form extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'image', 'skill', 'gender', 'country', 'created_at', 'updated_at'];
+    protected $table = 'forms';
 }

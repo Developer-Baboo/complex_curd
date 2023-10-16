@@ -12,7 +12,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        $forms = Form::all();
+        return view('show', compact('forms'));
     }
 
     /**
@@ -38,7 +39,7 @@ class FormController extends Controller
         //Save Checkbox
 
         $checkbox_data = $request->input('skill');
-        $data->skill = implode(',', $checkbox_data);
+        $data->skill = implode(' , ', $checkbox_data);
 
 
         //Save Image
@@ -65,9 +66,13 @@ class FormController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $record = Form::find($id); // Assuming YourModel is the model you want to edit
+        if (!$record) {
+            return abort(404); // Or handle the situation where the record is not found
+        }
+        return view('edit', compact('record'));
     }
 
     /**
@@ -83,6 +88,7 @@ class FormController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       Form::destroy($id);
+       return redirect()->back()->with('success', 'Data Deleted');
     }
 }
