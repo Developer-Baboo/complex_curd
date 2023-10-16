@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Form;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -19,7 +20,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -27,7 +28,30 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Form();
+        $data->name = $request->input('name');
+
+        $data->gender = $request->input('gender');
+
+        $data->country = $request->input('country');
+
+        //Save Checkbox
+
+        $checkbox_data = $request->input('skill');
+        $data->skill = implode(',', $checkbox_data);
+
+
+        //Save Image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_name = time(). '.'. $image->getClientOriginalExtension();
+            $image->move(public_path('assets/images'), $image_name);
+            $data->image = $image_name;
+        }
+
+        $data->save();
+        return redirect()->back()->with('success', 'Data Saved');
+
     }
 
     /**
