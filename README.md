@@ -3,26 +3,26 @@
 
 
 ## About Project
-✅ upload image in laravel 10
-✅ Edit and update image in Laravel
-✅ upload and display image in laravel 10
-✅ show selected image in form in laravel
+✅ upload image in laravel 10 <br />
+✅ Edit and update image in Laravel <br />
+✅ upload and display image in laravel 10 <br />
+✅ show selected image in form in laravel <br />
 
-✅send checkbox value in laravel 10
-✅ edit checkbox value in laravel
-✅ pass checkbox value from view to controller in laravel
+✅send checkbox value in laravel 10 <br />
+✅ edit checkbox value in laravel <br />
+✅ pass checkbox value from view to controller in laravel <br />
 
-✅ send radio button value in laravel form
-✅ show selected radio button in laravel
-✅edit radio button in laravel 10
-✅radio button crud in laravel 10
+✅ send radio button value in laravel form <br />
+✅ show selected radio button in laravel<br />
+✅edit radio button in laravel 10<br />
+✅radio button crud in laravel 10<br />
 
-✅how to get select option value in laravel
-✅how to update select option value in laravel
-✅select option value in laravel edit
+✅how to get select option value in laravel <br />
+✅how to update select option value in laravel <br />
+✅select option value in laravel edit <br />
 
-✅ send data in database
-✅display data from database in laravel
-✅edit data in database
-✅delete data in database 
-✅Show selected image JavaScript
+✅ send data in database <br />
+✅display data from database in laravel <br />
+✅edit data in database <br />
+✅delete data in database  <br />
+✅Show selected image JavaScript <br />
