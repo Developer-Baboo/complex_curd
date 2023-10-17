@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class FormController extends Controller
 {
@@ -21,7 +22,6 @@ class FormController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -29,6 +29,21 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation rules
+        $rules = [
+            'name' => 'required|string|max:255',
+            'gender' => 'required|in:Male,Female',
+            'country' => 'required|string|max:255',
+            'skill' => 'required|array|min:1', // At least one skill is required
+            'skill.*' => 'in:java,python,c++', // Each skill must be one of these values
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:1024', // 1 MB maximum for jpeg, png, jpg files
+        ];
+        // Validate the request data
+        $validator = Validator::make($request->all(), $rules);
+        // If validation fails, redirect back with errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $data = new Form();
         $data->name = $request->input('name');
 
@@ -45,14 +60,13 @@ class FormController extends Controller
         //Save Image
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $image_name = time(). '.'. $image->getClientOriginalExtension();
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('assets/images'), $image_name);
             $data->image = $image_name;
         }
 
         $data->save();
         return redirect('/')->with('success', 'User Added Successfully');
-
     }
 
     /**
@@ -80,6 +94,7 @@ class FormController extends Controller
      */
     public function update(Request $request, string $id)
     {
+    
         $data = Form::find($id);
 
         $data->name = $request->input('name');
@@ -113,7 +128,7 @@ class FormController extends Controller
      */
     public function destroy(string $id)
     {
-       Form::destroy($id);
-       return redirect('/')->with('success', 'User Deleted Successfully');
+        Form::destroy($id);
+        return redirect('/')->with('success', 'User Deleted Successfully');
     }
 }
